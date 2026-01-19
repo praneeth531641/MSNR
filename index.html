@@ -1,157 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mukkara Siva Nanda Reddy | Data Engineer</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mukkara Siva Nanda Reddy | Data Engineer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* ================= VARIABLES & RESET ================= */
+        :root {
+            --bg-body: #050507;
+            --surface-1: rgba(255, 255, 255, 0.03);
+            --surface-2: rgba(255, 255, 255, 0.06);
+            --border: rgba(255, 255, 255, 0.08);
+            --primary: #38bdf8; /* Sky Blue */
+            --accent: #22c55e;  /* Success Green */
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --font-ui: 'Inter', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
+        }
 
-  <!-- SECURITY (SAFE CSP) -->
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; font-src 'self';">
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 100px; /* Space for mobile nav */
+        }
+
+        /* ================= BACKGROUND FX ================= */
+        .glow-fx {
+            position: fixed; top: -20%; right: -10%;
+            width: 60vw; height: 60vw;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* ================= LAYOUT ================= */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* ================= TOP NAV (Desktop) ================= */
+        .top-nav {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(5, 5, 7, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            display: none; /* Hidden on mobile by default */
+        }
+
+        .nav-inner {
+            display: flex; justify-content: space-between; align-items: center;
+        }
+
+        .logo { font-family: var(--font-code); font-weight: 700; font-size: 1.1rem; letter-spacing: -0.5px; }
+        .logo span { color: var(--primary); }
+
+        .nav-links a {
+            color: var(--text-muted); text-decoration: none; margin-left: 2rem;
+            font-size: 0.9rem; font-weight: 500; transition: 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-main); }
+        .nav-cta {
+            background: rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 6px; color: #fff !important;
+        }
+
+        @media(min-width: 768px) { .top-nav { display: block; } }
+
+        /* ================= HERO SECTION ================= */
+        .hero { padding: 4rem 0 3rem; }
+        
+        .status-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.2);
+            color: var(--accent); padding: 6px 12px; border-radius: 100px;
+            font-size: 0.75rem; font-weight: 600; font-family: var(--font-code);
+            margin-bottom: 1.5rem;
+        }
+        .status-dot { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 8px var(--accent); }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800; line-height: 1.1; letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #fff, var(--primary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .hero-role {
+            font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 600px;
+        }
+        .hero-role span { color: var(--primary); }
+
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 12px 24px; border-radius: 12px; text-decoration: none;
+            font-weight: 600; font-size: 0.95rem; transition: 0.2s;
+        }
+        .btn-primary { background: var(--primary); color: #000; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3); }
+        .btn-outline { border: 1px solid var(--border); color: var(--text-main); background: var(--surface-1); }
+        .btn-outline:hover { background: var(--surface-2); border-color: var(--text-muted); }
+
+        /* ================= BENTO GRID SYSTEM ================= */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            padding-bottom: 2rem;
+        }
+
+        @media(min-width: 768px) {
+            .bento-grid { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto auto; }
+            .card-summary { grid-column: span 2; }
+            .card-exp { grid-column: span 2; grid-row: span 2; }
+            .card-skills { grid-column: span 1; grid-row: span 1; }
+            .card-edu { grid-column: span 1; grid-row: span 2; }
+        }
+
+        .card {
+            background: var(--surface-1);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            display: flex; flex-direction: column;
+        }
+        .card:hover { border-color: rgba(255,255,255,0.2); }
+
+        .card-title {
+            font-size: 0.75rem; font-weight: 700; color: var(--text-muted);
+            letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1.2rem;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .card-title i { color: var(--primary); }
+
+        /* Summary Card */
+        .summary-text { font-size: 1rem; color: var(--text-main); }
+
+        /* Experience Card */
+        .job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
+        .company { font-weight: 700; font-size: 1.1rem; color: #fff; }
+        .job-role { font-size: 0.9rem; color: var(--primary); font-family: var(--font-code); display: block; margin-bottom: 1rem; }
+        .job-list { list-style: none; }
+        .job-list li {
+            position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem;
+            font-size: 0.95rem; color: var(--text-muted);
+        }
+        .job-list li::before {
+            content: "▹"; position: absolute; left: 0; color: var(--primary);
+        }
+        .job-list strong { color: var(--text-main); font-weight: 600; }
+
+        /* Skills Card (Progress Bars) */
+        .skill-item { margin-bottom: 1rem; }
+        .skill-info { display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 0.85rem; }
+        .skill-bar-bg { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; }
+        .skill-bar-fill { height: 100%; background: var(--primary); border-radius: 10px; }
+
+        /* Education Card */
+        .edu-item { margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border); }
+        .edu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .degree { display: block; font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+        .school { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px; }
+        .meta { display: flex; justify-content: space-between; font-size: 0.8rem; font-family: var(--font-code); }
+        .grade { color: var(--accent); font-weight: 600; }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem 0; text-align: center; color: var(--text-muted); font-size: 0.9rem;
+            margin-bottom: 60px; /* Space for mobile nav */
+        }
+        .contact-links { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+        .contact-links a { color: var(--text-main); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+
+        /* ================= MOBILE BOTTOM NAV (APP STYLE) ================= */
+        .mobile-nav {
+            position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 400px;
+            background: rgba(15, 15, 20, 0.9);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 24px;
+            display: flex; justify-content: space-around;
+            padding: 12px 0;
+            z-index: 100;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+
+        .nav-item {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-decoration: none; color: var(--text-muted); transition: 0.2s;
+        }
+        .nav-item i { font-size: 1.2rem; margin-bottom: 4px; }
+        .nav-item span { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .nav-item.active { color: var(--primary); }
+
+        @media(min-width: 768px) { .mobile-nav { display: none; } }
+
+    </style>
 </head>
-
 <body>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar">
-  <div class="nav-container">
-    <div class="nav-left">
-      <div class="brand">Mukkara Siva Nanda Reddy</div>
-      <div class="breadcrumb">Home / Portfolio</div>
-    </div>
+    <div class="glow-fx"></div>
 
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#education">Education</a></li>
-      <li class="resume"><a href="resume.pdf" target="_blank">Resume</a></li>
-    </ul>
-  </div>
-</nav>
+    <nav class="top-nav">
+        <div class="container nav-inner">
+            <div class="logo">SNR<span>.DATA</span></div>
+            <div class="nav-links">
+                <a href="#about">Overview</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+                <a href="resume.pdf" target="_blank" class="nav-cta">Resume</a>
+            </div>
+        </div>
+    </nav>
 
-<!-- Spacer to prevent overlap -->
-<div class="nav-spacer"></div>
+    <main class="container">
+        <section class="hero" id="home">
+            <div class="status-badge">
+                <span class="status-dot"></span> 2026 • AVAILABLE FOR HIRE
+            </div>
+            
+            <h1>Mukkara Siva <br><span class="gradient-text">Nanda Reddy</span></h1>
+            
+            <p class="hero-role">
+                Data Engineer specializing in <span>SQL</span>, <span>ETL (NiFi)</span>, and <span>Analytics</span>. 
+                Building reliable data platforms for Pharmaceutical Quality Control environments.
+            </p>
 
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <div class="hero-card">
-    <h1>Mukkara Siva Nanda Reddy</h1>
-    <p class="subtitle">Data Engineer • SQL • ETL • Analytics</p>
-    <p class="desc">
-      Building reliable data platforms and dashboards for
-      Pharmaceutical Quality Control environments.
-    </p>
+            <div class="hero-actions">
+                <a href="mailto:msnreddy7093@gmail.com" class="btn btn-primary">
+                    <i class="fa-solid fa-envelope" style="margin-right:8px;"></i> Email Me
+                </a>
+                <a href="tel:+918096494471" class="btn btn-outline">
+                    <i class="fa-solid fa-phone" style="margin-right:8px;"></i> +91 8096494471
+                </a>
+                <a href="resume.pdf" target="_blank" class="btn btn-outline">
+                    <i class="fa-solid fa-file-pdf" style="margin-right:8px;"></i> CV
+                </a>
+            </div>
+        </section>
 
-    <div class="hero-buttons">
-      <a href="mailto:msnreddy7093@gmail.com">Contact</a>
-      <a href="#experience" class="outline">Experience</a>
-    </div>
-  </div>
-</section>
+        <section class="bento-grid">
+            
+            <div class="card card-summary" id="about">
+                <div class="card-title"><i class="fa-solid fa-user"></i> Professional Summary</div>
+                <p class="summary-text">
+                    Data Engineer with nearly <strong>3 years</strong> of experience designing, building, and supporting enterprise-grade data pipelines, analytical databases, and KPI dashboards in regulated pharmaceutical QC environments.
+                </p>
+            </div>
 
-<!-- ================= ABOUT ================= -->
-<section id="about">
-  <h2>Professional Summary</h2>
-  <p>
-    Data Engineer with nearly 3 years of experience designing, building,
-    and supporting enterprise-grade data pipelines, analytical databases,
-    and KPI dashboards in regulated pharmaceutical QC environments.
-  </p>
-</section>
+            <div class="card card-exp" id="experience">
+                <div class="card-title"><i class="fa-solid fa-briefcase"></i> Work History</div>
+                
+                <div class="job-header">
+                    <div class="company">Caliber Technologies Pvt. Ltd</div>
+                </div>
+                <span class="job-role">Software Engineer / Data Engineer | 2023 – Present</span>
+                
+                <ul class="job-list">
+                    <li>Designed <strong>Apache NiFi ETL pipelines</strong> (historical & incremental) to move critical data.</li>
+                    <li>Integrated <strong>Chromeleon</strong> lab systems into SQL Server for centralized reporting.</li>
+                    <li>Built analytical datasets and automated high-stakes <strong>SQL Agent jobs</strong>.</li>
+                    <li>Developed KPI dashboards for QC leadership using <strong>Superset</strong>.</li>
+                    <li>Deployed and supported systems on <strong>IIS</strong> servers.</li>
+                </ul>
+            </div>
 
-<!-- ================= SKILLS ================= -->
-<section id="skills">
-  <h2>Technical Expertise</h2>
+            <div class="card card-skills" id="skills">
+                <div class="card-title"><i class="fa-solid fa-code"></i> Expertise</div>
+                
+                <div class="skill-item">
+                    <div class="skill-info"><span>MS SQL Server</span> <span>90%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+                </div>
 
-  <div class="skill">
-    <span>MS SQL Server</span>
-    <div class="bar"><div style="width:90%"></div></div>
-  </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Apache NiFi (ETL)</span> <span>85%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+                </div>
 
-  <div class="skill">
-    <span>Apache NiFi (ETL)</span>
-    <div class="bar"><div style="width:85%"></div></div>
-  </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Superset / Power BI</span> <span>80%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+                </div>
 
-  <div class="skill">
-    <span>Superset / Power BI</span>
-    <div class="bar"><div style="width:80%"></div></div>
-  </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Python</span> <span>70%</span></div>
+                    <div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 70%;"></div></div>
+                </div>
+            </div>
 
-  <div class="skill">
-    <span>Python</span>
-    <div class="bar"><div style="width:70%"></div></div>
-  </div>
-</section>
+            <div class="card card-edu" id="education">
+                <div class="card-title"><i class="fa-solid fa-graduation-cap"></i> Education</div>
+                
+                <div class="edu-item">
+                    <span class="degree">B.E – Engineering</span>
+                    <span class="school">Saveetha School of Engineering</span>
+                    <div class="meta">
+                        <span>2017 – 2021</span>
+                        <span class="grade">77%</span>
+                    </div>
+                </div>
 
-<!-- ================= EXPERIENCE ================= -->
-<section id="experience">
-  <h2>Experience</h2>
+                <div class="edu-item">
+                    <span class="degree">Intermediate (12th)</span>
+                    <span class="school">State Board</span>
+                    <div class="meta">
+                        <span>Completed</span>
+                        <span class="grade">91.9%</span>
+                    </div>
+                </div>
 
-  <div class="card">
-    <h3>Caliber Technologies Pvt. Ltd</h3>
-    <p class="muted">Software Engineer / Data Engineer | 2023 – Present</p>
+                <div class="edu-item">
+                    <span class="degree">Secondary (10th)</span>
+                    <span class="school">State Board</span>
+                    <div class="meta">
+                        <span>Completed</span>
+                        <span class="grade">88%</span>
+                    </div>
+                </div>
+            </div>
 
-    <ul>
-      <li>Designed Apache NiFi ETL pipelines (historical & incremental)</li>
-      <li>Integrated Chromeleon lab systems into SQL Server</li>
-      <li>Built analytical datasets and automated SQL Agent jobs</li>
-      <li>Developed KPI dashboards for QC leadership</li>
-      <li>Deployed and supported systems on IIS</li>
-    </ul>
-  </div>
-</section>
+        </section>
+    </main>
 
-<!-- ================= EDUCATION ================= -->
-<section id="education">
-  <h2>Education</h2>
+    <footer class="footer">
+        <div class="container">
+            <p>Built by Mukkara Siva Nanda Reddy</p>
+            <div class="contact-links">
+                <a href="mailto:msnreddy7093@gmail.com"><i class="fa-solid fa-envelope"></i> msnreddy7093@gmail.com</a>
+                <span>•</span>
+                <span>India (Telugu, English)</span>
+            </div>
+        </div>
+    </footer>
 
-  <div class="grid">
-    <div class="card">
-      <h3>B.E – Saveetha School of Engineering</h3>
-      <p>2017 – 2021</p>
-      <strong>77%</strong>
-    </div>
-
-    <div class="card">
-      <h3>Intermediate (12th)</h3>
-      <strong>91.9%</strong>
-    </div>
-
-    <div class="card">
-      <h3>Secondary (10th)</h3>
-      <strong>88%</strong>
-    </div>
-  </div>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer class="footer">
-  <p>📧 msnreddy7093@gmail.com | 📞 +91 8096494471</p>
-  <p>India • English • Telugu</p>
-</footer>
-
-<!-- ================= NAVBAR AUTO HIDE ================= -->
-<script>
-let lastScroll = 0;
-const navbar = document.querySelector(".navbar");
-
-window.addEventListener("scroll", () => {
-  const current = window.scrollY;
-
-  if (current > lastScroll && current > 80) {
-    navbar.style.transform = "translateY(-100%)";
-  } else {
-    navbar.style.transform = "translateY(0)";
-  }
-
-  lastScroll = current;
-});
-</script>
+    <nav class="mobile-nav">
+        <a href="#home" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="#experience" class="nav-item">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Work</span>
+        </a>
+        <a href="#skills" class="nav-item">
+            <i class="fa-solid fa-bolt"></i>
+            <span>Tech</span>
+        </a>
+        <a href="#education" class="nav-item">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Edu</span>
+        </a>
+    </nav>
 
 </body>
 </html>

@@ -87,50 +87,75 @@ a:focus-visible {
   color: #38bdf8;
 }
 
-/* ================= HERO ================= */
+/* Hide nav links on mobile (prevents clutter) */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}
+
+/* ================= HERO (REDESIGNED) ================= */
 .hero {
   min-height: calc(100vh - 64px);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 2rem;
 }
 
 .hero-card {
-  max-width: 800px;
-  background: rgba(2, 6, 23, 0.9);
-  padding: 3rem;
+  max-width: 680px;
+  width: 100%;
   text-align: center;
+  padding: 2.5rem 2rem;
 }
 
-.hero h1 {
-  font-size: 3rem;
+.hero-name {
+  font-size: clamp(2.2rem, 6vw, 3rem);
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
   background: linear-gradient(90deg, #38bdf8, #22c55e);
   -webkit-background-clip: text;
   color: transparent;
 }
 
-.subtitle {
-  margin: 1rem 0;
+.hero-role {
+  font-size: 1rem;
   color: #94a3b8;
+  margin-bottom: 1.5rem;
 }
 
-.desc {
+.hero-role span {
+  margin: 0 0.25rem;
+}
+
+.hero-tagline {
+  font-size: 1rem;
+  line-height: 1.6;
   margin-bottom: 2rem;
 }
 
-.hero-buttons a {
-  display: inline-block;
-  margin: 0.5rem;
-  padding: 0.6rem 1.4rem;
-  text-decoration: none;
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-.hero-buttons a:first-child {
+.btn {
+  padding: 0.6rem 1.4rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  min-width: 120px;
+  text-align: center;
+}
+
+.btn.primary {
   background: #38bdf8;
   color: #020617;
 }
 
-.hero-buttons .outline {
+.btn.secondary {
   border: 1px solid #38bdf8;
   color: #38bdf8;
 }
@@ -186,47 +211,9 @@ h2 {
   border-top: 1px solid #1e293b;
 }
 
-/* ================= MOBILE FIX ================= */
-@media (max-width: 768px) {
-  .nav-container {
-    flex-direction: column;
-    justify-content: center;
-    padding: 0.5rem 1rem;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-    border-top: 1px solid #1e293b;
-  }
-
-  .nav-links a {
-    display: block;
-    text-align: center;
-    padding: 14px 0;
-    min-height: 44px;
-  }
-
-  section {
-    padding: 4rem 6%;
-  }
-
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-}
-
-/* ================= REDUCED MOTION ================= */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
-/* ================= PRINT (PDF) ================= */
+/* ================= PRINT ================= */
 @media print {
-  nav, .hero-buttons, footer {
+  nav, .hero-actions, footer {
     display: none;
   }
 
