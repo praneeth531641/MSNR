@@ -1,13 +1,26 @@
+/* RESET & BASE */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: radial-gradient(circle at top, #020617, #020617);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #020617;
   color: #e5e7eb;
+  line-height: 1.6;
+}
+
+/* ACCESSIBILITY: KEYBOARD FOCUS */
+a:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 /* NAVBAR */
@@ -15,25 +28,55 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(2,6,23,0.8);
-  backdrop-filter: blur(12px);
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 8%;
+  background: #020617;
+  border-bottom: 1px solid #1e293b;
+  transition: transform 0.3s ease;
   z-index: 1000;
 }
 
-.navbar ul {
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0.9rem 2rem;
   display: flex;
-  gap: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.navbar a {
+.brand {
+  font-size: 0.95rem;
+  color: #cbd5f5;
+}
+
+.breadcrumb {
+  display: none;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+@media (min-width: 1200px) {
+  .breadcrumb { display: block; }
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
   text-decoration: none;
+  font-size: 0.9rem;
   color: #94a3b8;
+  border-bottom: 2px solid transparent;
 }
 
-.navbar a:hover {
+.nav-links a:hover {
+  color: #e5e7eb;
+  border-bottom-color: #38bdf8;
+}
+
+.resume a {
   color: #38bdf8;
 }
 
@@ -45,11 +88,10 @@ body {
 }
 
 .hero-card {
-  background: rgba(2,6,23,0.85);
-  padding: 3rem;
-  border-radius: 20px;
+  max-width: 800px;
   text-align: center;
-  box-shadow: 0 0 60px rgba(56,189,248,0.2);
+  padding: 3rem;
+  background: rgba(2,6,23,0.85);
 }
 
 .hero h1 {
@@ -59,26 +101,33 @@ body {
   color: transparent;
 }
 
+.subtitle {
+  margin: 1rem 0;
+  color: #94a3b8;
+}
+
 .hero-buttons a {
   display: inline-block;
   margin: 1rem;
-  padding: 0.7rem 1.4rem;
-  border-radius: 30px;
+  padding: 0.6rem 1.4rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hero-buttons a:first-child {
   background: #38bdf8;
   color: #020617;
-  text-decoration: none;
-  font-weight: bold;
 }
 
 .hero-buttons .outline {
-  background: transparent;
-  border: 2px solid #38bdf8;
+  border: 1px solid #38bdf8;
   color: #38bdf8;
 }
 
 /* SECTIONS */
 section {
   padding: 6rem 10%;
+  scroll-margin-top: 90px;
 }
 
 h2 {
@@ -86,36 +135,13 @@ h2 {
   margin-bottom: 2rem;
 }
 
-/* METRICS */
-.metrics {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.metric {
-  background: #020617;
-  padding: 2rem;
-  border-radius: 15px;
-  text-align: center;
-}
-
-.metric h3 {
-  font-size: 2.5rem;
-  color: #38bdf8;
-}
-
 /* SKILLS */
-.skill {
-  margin-bottom: 1.5rem;
-}
+.skill { margin-bottom: 1.5rem; }
 
 .bar {
-  background: #020617;
-  height: 12px;
+  height: 10px;
+  background: #1e293b;
   border-radius: 10px;
-  overflow: hidden;
 }
 
 .bar div {
@@ -123,12 +149,11 @@ h2 {
   background: linear-gradient(90deg,#38bdf8,#22c55e);
 }
 
-/* TIMELINE */
+/* EXPERIENCE */
 .timeline-card {
   background: #020617;
-  padding: 2.5rem;
   border-left: 4px solid #22c55e;
-  border-radius: 15px;
+  padding: 2rem;
 }
 
 /* EDUCATION */
@@ -141,19 +166,46 @@ h2 {
 .edu-card {
   background: #020617;
   padding: 2rem;
-  border-radius: 15px;
   text-align: center;
 }
 
 /* FOOTER */
 .footer {
-  padding: 2rem;
   text-align: center;
-  background: #020617;
+  padding: 2rem;
+  border-top: 1px solid #1e293b;
+}
+
+/* REDUCED MOTION */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* PRINT-FRIENDLY RESUME */
+@media print {
+  body {
+    background: #ffffff;
+    color: #000;
+  }
+
+  nav, footer, .hero-buttons {
+    display: none;
+  }
+
+  section {
+    padding: 1.5rem 2rem;
+  }
+
+  h1, h2 {
+    color: #000;
+  }
 }
 
 /* MOBILE */
-@media(max-width:768px){
-  .hero h1{font-size:2.2rem}
-  section{padding:4rem 6%}
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2.2rem; }
+  section { padding: 4rem 6%; }
 }

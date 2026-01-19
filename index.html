@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Siva Nanda Reddy | Data Engineer</title>
-<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mukkara Siva Nanda Reddy | Data Engineer</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
 <nav class="navbar">
-  <h1>SN</h1>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#education">Education</a></li>
-  </ul>
+  <div class="nav-container">
+    <div>
+      <span class="brand">Mukkara Siva Nanda Reddy</span>
+      <span class="breadcrumb">Home / Portfolio</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li class="resume"><a href="resume.pdf" target="_blank">Resume</a></li>
+    </ul>
+  </div>
 </nav>
 
 <section class="hero">
   <div class="hero-card">
     <h1>Mukkara Siva Nanda Reddy</h1>
-    <h2>Data Engineer • SQL • ETL • Analytics</h2>
-    <p>Designing high-quality data pipelines & dashboards for Pharmaceutical QC systems</p>
+    <p class="subtitle">Data Engineer • SQL • ETL • Analytics</p>
+    <p>Building reliable data platforms for Pharmaceutical QC systems</p>
+
     <div class="hero-buttons">
       <a href="mailto:msnreddy7093@gmail.com">Contact</a>
       <a href="#experience" class="outline">Experience</a>
@@ -31,22 +39,16 @@
   </div>
 </section>
 
-<section id="about" class="about">
+<section id="about">
   <h2>Professional Summary</h2>
   <p>
-    Data Engineer with ~3 years of experience building enterprise-grade data pipelines,
-    analytical databases, and KPI dashboards for Pharmaceutical Quality Control labs.
-    Strong in MS SQL Server, Apache NiFi ETL, automation, and regulated production environments.
+    Data Engineer with nearly 3 years of experience designing, building, and supporting
+    enterprise data pipelines, analytical databases, and dashboards for regulated
+    Pharmaceutical Quality Control environments.
   </p>
-
-  <div class="metrics">
-    <div class="metric"><h3>3+</h3><span>Years Experience</span></div>
-    <div class="metric"><h3>20+</h3><span>Dashboards</span></div>
-    <div class="metric"><h3>100M+</h3><span>Records Processed</span></div>
-  </div>
 </section>
 
-<section id="skills" class="skills">
+<section id="skills">
   <h2>Technical Expertise</h2>
 
   <div class="skill">
@@ -63,37 +65,24 @@
     <span>Data Visualization (Superset / Power BI)</span>
     <div class="bar"><div style="width:80%"></div></div>
   </div>
+</section>
 
-  <div class="skill">
-    <span>Python</span>
-    <div class="bar"><div style="width:70%"></div></div>
-  </div>
+<section id="experience">
+  <h2>Experience</h2>
 
-  <div class="skill">
-    <span>Docker & IIS</span>
-    <div class="bar"><div style="width:65%"></div></div>
+  <div class="timeline-card">
+    <h3>Caliber Technologies Pvt. Ltd</h3>
+    <span>Software Engineer / Data Engineer | 2023 – Present</span>
+    <ul>
+      <li>Designed ETL pipelines using Apache NiFi</li>
+      <li>Built SQL-based analytical datasets</li>
+      <li>Automated refresh using SQL Server Agent</li>
+      <li>Developed KPI dashboards for QC labs</li>
+    </ul>
   </div>
 </section>
 
-<section id="experience" class="experience">
-  <h2>Experience Timeline</h2>
-
-  <div class="timeline">
-    <div class="timeline-card">
-      <h3>Caliber Technologies Pvt. Ltd</h3>
-      <span>Software Engineer / Data Engineer | 2023 – Present</span>
-      <ul>
-        <li>Built SQL-based analytical layers for Chromeleon QC systems</li>
-        <li>Designed Apache NiFi ETL pipelines (incremental & historical)</li>
-        <li>Automated refresh using SQL Server Agent jobs</li>
-        <li>Developed KPI dashboards using Apache Superset</li>
-        <li>Deployed & supported apps on IIS production servers</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section id="education" class="education">
+<section id="education">
   <h2>Education</h2>
 
   <div class="edu-grid">
@@ -105,14 +94,12 @@
 
     <div class="edu-card">
       <h3>Intermediate (12th)</h3>
-      <p>2015 – 2017</p>
-      <strong>91.9%</strong>
+      <p>91.9%</p>
     </div>
 
     <div class="edu-card">
       <h3>Secondary School (10th)</h3>
-      <p>2014 – 2015</p>
-      <strong>88%</strong>
+      <p>88%</p>
     </div>
   </div>
 </section>
@@ -121,6 +108,23 @@
   <p>📧 msnreddy7093@gmail.com | 📞 +91 8096494471</p>
   <p>India • English • Telugu</p>
 </footer>
+
+<!-- AUTO-HIDE NAVBAR -->
+<script>
+let lastScroll = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll && currentScroll > 80) {
+    navbar.style.transform = 'translateY(-100%)';
+  } else {
+    navbar.style.transform = 'translateY(0)';
+  }
+  lastScroll = currentScroll;
+});
+</script>
 
 </body>
 </html>
