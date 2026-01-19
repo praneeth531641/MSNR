@@ -5,21 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mukkara Siva Nanda Reddy | Data Engineer</title>
 
-  <!-- Performance -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="styles.css">
-  <link rel="stylesheet" href="styles.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css" />
 
-  <!-- Security -->
+  <!-- SECURITY (SAFE CSP) -->
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; font-src 'self'; frame-ancestors 'none';">
+        content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; font-src 'self';">
 </head>
 
 <body>
 
+<!-- ================= NAVBAR ================= -->
 <nav class="navbar">
   <div class="nav-container">
-    <div>
+    <div class="nav-left">
       <div class="brand">Mukkara Siva Nanda Reddy</div>
       <div class="breadcrumb">Home / Portfolio</div>
     </div>
@@ -34,11 +33,18 @@
   </div>
 </nav>
 
+<!-- Spacer to prevent overlap -->
+<div class="nav-spacer"></div>
+
+<!-- ================= HERO ================= -->
 <section class="hero">
   <div class="hero-card">
     <h1>Mukkara Siva Nanda Reddy</h1>
     <p class="subtitle">Data Engineer • SQL • ETL • Analytics</p>
-    <p>Building reliable data platforms for Pharmaceutical QC systems</p>
+    <p class="desc">
+      Building reliable data platforms and dashboards for
+      Pharmaceutical Quality Control environments.
+    </p>
 
     <div class="hero-buttons">
       <a href="mailto:msnreddy7093@gmail.com">Contact</a>
@@ -47,76 +53,103 @@
   </div>
 </section>
 
+<!-- ================= ABOUT ================= -->
 <section id="about">
   <h2>Professional Summary</h2>
   <p>
     Data Engineer with nearly 3 years of experience designing, building,
     and supporting enterprise-grade data pipelines, analytical databases,
-    and KPI dashboards for regulated Pharmaceutical Quality Control environments.
+    and KPI dashboards in regulated pharmaceutical QC environments.
   </p>
 </section>
 
+<!-- ================= SKILLS ================= -->
 <section id="skills">
   <h2>Technical Expertise</h2>
 
-  <div class="skill"><span>MS SQL Server</span><div class="bar"><div style="width:90%"></div></div></div>
-  <div class="skill"><span>Apache NiFi (ETL)</span><div class="bar"><div style="width:85%"></div></div></div>
-  <div class="skill"><span>Superset / Power BI</span><div class="bar"><div style="width:80%"></div></div></div>
-  <div class="skill"><span>Python</span><div class="bar"><div style="width:70%"></div></div></div>
+  <div class="skill">
+    <span>MS SQL Server</span>
+    <div class="bar"><div style="width:90%"></div></div>
+  </div>
+
+  <div class="skill">
+    <span>Apache NiFi (ETL)</span>
+    <div class="bar"><div style="width:85%"></div></div>
+  </div>
+
+  <div class="skill">
+    <span>Superset / Power BI</span>
+    <div class="bar"><div style="width:80%"></div></div>
+  </div>
+
+  <div class="skill">
+    <span>Python</span>
+    <div class="bar"><div style="width:70%"></div></div>
+  </div>
 </section>
 
+<!-- ================= EXPERIENCE ================= -->
 <section id="experience">
   <h2>Experience</h2>
 
-  <div class="timeline-card">
+  <div class="card">
     <h3>Caliber Technologies Pvt. Ltd</h3>
-    <span>Software Engineer / Data Engineer | 2023 – Present</span>
+    <p class="muted">Software Engineer / Data Engineer | 2023 – Present</p>
+
     <ul>
-      <li>Designed Apache NiFi ETL pipelines (incremental & historical)</li>
+      <li>Designed Apache NiFi ETL pipelines (historical & incremental)</li>
       <li>Integrated Chromeleon lab systems into SQL Server</li>
-      <li>Built analytical datasets & automated SQL Agent jobs</li>
+      <li>Built analytical datasets and automated SQL Agent jobs</li>
       <li>Developed KPI dashboards for QC leadership</li>
-      <li>Deployed & supported systems on IIS</li>
+      <li>Deployed and supported systems on IIS</li>
     </ul>
   </div>
 </section>
 
-<section id="case-study">
-  <h2>Case Study: Quality Command Centre (QCC)</h2>
-  <p><strong>Domain:</strong> Pharmaceutical Quality Control</p>
-  <p><strong>Role:</strong> Data Engineer</p>
-  <ul>
-    <li>Centralized lab data ingestion from Chromeleon</li>
-    <li>Built historical & real-time KPI datasets</li>
-    <li>Enabled management reporting & audit readiness</li>
-  </ul>
-</section>
-
+<!-- ================= EDUCATION ================= -->
 <section id="education">
   <h2>Education</h2>
 
-  <div class="edu-grid">
-    <div class="edu-card"><h3>B.E – Saveetha School of Engineering</h3><p>2017–2021 | 77%</p></div>
-    <div class="edu-card"><h3>Intermediate (12th)</h3><p>91.9%</p></div>
-    <div class="edu-card"><h3>Secondary (10th)</h3><p>88%</p></div>
+  <div class="grid">
+    <div class="card">
+      <h3>B.E – Saveetha School of Engineering</h3>
+      <p>2017 – 2021</p>
+      <strong>77%</strong>
+    </div>
+
+    <div class="card">
+      <h3>Intermediate (12th)</h3>
+      <strong>91.9%</strong>
+    </div>
+
+    <div class="card">
+      <h3>Secondary (10th)</h3>
+      <strong>88%</strong>
+    </div>
   </div>
 </section>
 
+<!-- ================= FOOTER ================= -->
 <footer class="footer">
   <p>📧 msnreddy7093@gmail.com | 📞 +91 8096494471</p>
   <p>India • English • Telugu</p>
 </footer>
 
-<!-- Auto-hide navbar -->
+<!-- ================= NAVBAR AUTO HIDE ================= -->
 <script>
 let lastScroll = 0;
-const navbar = document.querySelector('.navbar');
+const navbar = document.querySelector(".navbar");
 
-window.addEventListener('scroll', () => {
-  const y = window.pageYOffset;
-  navbar.style.transform =
-    y > lastScroll && y > 80 ? 'translateY(-100%)' : 'translateY(0)';
-  lastScroll = y;
+window.addEventListener("scroll", () => {
+  const current = window.scrollY;
+
+  if (current > lastScroll && current > 80) {
+    navbar.style.transform = "translateY(-100%)";
+  } else {
+    navbar.style.transform = "translateY(0)";
+  }
+
+  lastScroll = current;
 });
 </script>
 
